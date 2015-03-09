@@ -1,0 +1,45 @@
+	h1{
+		color:green;
+		background-color:red;
+		text-decoration:underline;
+		font-style: italic;
+    		text-transform: uppercase;
+		 margin: 10px;
+   		 padding: 4px;
+	}
+	h2{
+		color:#90a;
+		font-size:2em;
+		background-color:gold;
+		border-style: inset;
+    		border-width: 2px;
+    		border-left-width: 20px;
+    		border-right-width: 4px;
+    		border-color: olive;
+	}
+
+     	p {
+                color:orange;
+    letter-spacing: 0.3em;
+    word-spacing: 2em;
+    line-height: 1.5;
+    text-align: center;
+	}
+
+        
+        a {
+                color:olive;
+
+        }
+
+	body{	font-family:areal,helvatica;
+		font-size:20px;
+		color:rgb(200,200,33);
+
+	}
+	a{text-decoration:underline;
+	}	
+	li {
+    color: #900;
+    font-style: italic;
+}

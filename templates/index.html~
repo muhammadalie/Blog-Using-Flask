@@ -1,0 +1,110 @@
+ <html>
+<style>
+	h1{
+		color:green;
+		background-color:red;
+		text-decoration:underline;
+		font-style: italic;
+    		text-transform: uppercase;
+	}
+	h2{
+		color:#90a;
+		font-size:2em;
+		background-color:gold;
+		border-style: inset;
+    		border-width: 2px;
+    		border-left-width: 20px;
+    		border-right-width: 4px;
+    		border-color: olive;
+	}	
+
+     	p {
+                color:red;
+    word-spacing: 0em;
+    letter-spacing: 0.00em;
+    line-height: 1.5;
+    text-align: center;
+	}
+
+        
+        a {
+                color:red;
+
+        }
+
+	body{	font-family:areal,helvatica;
+		font-size:20px;
+		color:rgb(200,200,33);
+
+	}
+	a{text-decoration:underline;
+	}	
+	li {
+    color: #900;
+    font-style: italic;
+}
+</style>
+	    <head>
+        <title>Home Page</title>	     
+	 <body>
+	
+	<form action="" method="post" name="login">
+                {{ sign.hidden_tag() }}
+
+        <h1>Blog</h1>
+	<p style="word-spacing: 0.00em;line-height: 0.15;text-align: right;">
+                User name:
+                {{ sign.username(size=16) }}
+        </p>
+        <p style="word-spacing: 0.00em;line-height: 0.15;text-align: right;">
+                Password: 
+                  {{ sign.password(size=16) }}<br>
+        </p>    
+
+        <p style="text-align: right;"><input type="submit" value="Sign in"></p>
+        </form>        
+	<div style="text-align: right;">To make a account: <a href="/signup">Signup</a></div>
+	<hr>
+      {% for entry in posts %}
+	<h3 style="color:green;">{{entry[1]}}</h3><br>
+	<div style="text-align: left;line-height: 0.0;color:black;font-size:0.8em;">{{entry[2]}}<br>
+	</div>
+	<hr>
+	<div style="text-align: right;line-height: 0.0;color:brown;font-size:0.8em;">{{entry[3]}}<br>
+	</div>
+	<hr>
+	{% for comment in comments %}
+		{% if comment[0]==entry[0] %}
+			<div style="text-align: left;line-height: 0.0;color:gray;font-size:0.8em;">{{comment[1]}}
+			(time:{{comment[2]}})</div><br>
+		{% endif %}
+	{% endfor %}
+
+	<form action="" method="post" name="login">
+        	{{ com.hidden_tag() }}
+	<p style="display:None">	
+		{{ com.postid(value=entry[0]) }}<br>
+	<p style="text-align: left;">
+ 		       	comment:<br>
+                	{{ com.comment(size=20) }}<br>
+	</p>
+	<p style="text-align: left;">
+			<input type="submit" value="Submit"><br></p>  
+	<hr><hr>    			
+	</form>	
+       {% endfor %}
+
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+				<span style="color: red;">[{{ message }}]</span>
+			{% endfor %}
+				
+		{% endif %}
+	{% endwith %}
+
+
+        </body>
+</html>
+ 
+
